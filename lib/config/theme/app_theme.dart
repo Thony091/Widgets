@@ -25,7 +25,7 @@ class AppTheme{
     // useMaterial3: true,
     colorSchemeSeed: colorList[ selectedColor ],
     appBarTheme: const AppBarTheme(
-      centerTitle: false
+      // centerTitle: false //para evitar que centre el titulo
     )
 
   );
