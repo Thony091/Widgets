@@ -58,6 +58,12 @@ class MenuItem {
       link: '/ui-controls', 
       icon: Icons.car_rental_outlined
     ),
+    MenuItem(
+      tittle: 'Tutorial de Aplicación', 
+      subTitle: 'App Tutorial Flutter', 
+      link: '/tutorial', 
+      icon: Icons.accessible_rounded
+    ),
 
   ];
 
