@@ -21,6 +21,7 @@ class MainApp extends ConsumerWidget {
 
     final isDarkMode = ref.watch(isDarkModeProvider);
     final selectedColor = ref.watch(selectedIndexColorProvider);
+    final appTheme = ref.watch(themeNotifierProvider); 
     
     return  MaterialApp.router(
       title: 'Flutter Widgets',
