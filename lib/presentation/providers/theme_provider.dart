@@ -24,12 +24,11 @@ class ThemeNotifier extends StateNotifier<AppTheme> {
 
   void toggleDarkMode(){
     state = state.copyWith( isDarkMode: !state.isDarkMode);
-    //el nuevo "state" va a ser una copia del "state" actual, pero, enviando el valor de la variable "isDarkMode" con el valor opuesto
+    //el nuevo "state" va a ser una copia del "state" actual, pero, enviando el valor de la variable "isDar∫kMode" con el valor opuesto
   }
 
-  void changeColorIndex(){
-
+  void changeColorIndex(int colorIndex){
+    state = state.copyWith( selectedColor: colorIndex );
   }
-
 
 }
