@@ -19,12 +19,14 @@ final themeNotifierProvider = StateNotifierProvider<ThemeNotifier, AppTheme>(
 
 //Controller o Notifier
 class ThemeNotifier extends StateNotifier<AppTheme> {
+  
   // State = Estado = new AppTheme();
-  ThemeNotifier() : super( AppTheme() ); //Solicito que cree una primera instanmcia de "AppTheme"
+  ThemeNotifier() : super( AppTheme() ); 
+  //Solicito que cree una primera instancia de "AppTheme"
 
   void toggleDarkMode(){
     state = state.copyWith( isDarkMode: !state.isDarkMode);
-    //el nuevo "state" va a ser una copia del "state" actual, pero, enviando el valor de la variable "isDar∫kMode" con el valor opuesto
+    //el nuevo "state" va a ser una copia del "state" actual, pero, enviando el valor de la variable "isDarkMode" con el valor opuesto
   }
 
   void changeColorIndex(int colorIndex){

@@ -1,32 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:widgets/config/menu/menu_items.dart';
+import 'package:widgets/presentation/providers/theme_provider.dart';
 import 'package:widgets/presentation/widgets/side_menu.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
 
   static const String name = 'home_screen';
 
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    
+  Widget build(BuildContext context, ref) {
+
+    final isDarkMode = ref.watch( themeNotifierProvider ).isDarkMode;
+
     final scaffoldKey = GlobalKey<ScaffoldState>();
 
     return  Scaffold(
       key: scaffoldKey, //tiene la referencia a este scaffold (tamaños, posiciones, etc.)
       appBar: AppBar(
-        title: const Text('Flutter'),        
+        title: const Text('Flutter'),
+                actions: [
+            IconButton(
+            icon: Icon(isDarkMode ? Icons.dark_mode_outlined : Icons.light_mode_outlined),
+            onPressed: () {
+              //ref.read(isDarkModeProvider.notifier).update((state) => !state);
+              ref.read( themeNotifierProvider.notifier )
+              .toggleDarkMode();
+              //controla el cambio de forma mas interna
+            }, 
+          )
+        ],
       ),
-
+    
       body: const _HomeView(),
 
       // "drawer" Barra lateral
       drawer: SideMenu(scaffoldKey: scaffoldKey,),
-
-      
-
+    
     );
   }
 }
