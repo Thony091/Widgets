@@ -5,7 +5,13 @@ import 'package:go_router/go_router.dart';
 import 'package:widgets/config/menu/menu_items.dart';
 
 class SideMenu extends StatefulWidget {
-  const SideMenu({super.key});
+
+  final GlobalKey<ScaffoldState> scaffoldKey;
+
+  const SideMenu({
+    super.key, 
+    required this.scaffoldKey
+  });
 
   @override
   State<SideMenu> createState() => _SideMenuState();
@@ -29,8 +35,9 @@ class _SideMenuState extends State<SideMenu> {
           navDrawerIndex = value; // Dar nuevo valor a variable "navDrawerIndex" y reemplazarlo por el valor que tenga "value"
         });
         final menuItem = MenuItem.appMenuItems[value];
-        
+        context.push( menuItem.link );//Redirecciona al screen correspondiente
         // context.push(menuItem.link); **************
+        widget.scaffoldKey.currentState?.closeDrawer();
       },
       children:  [
 

@@ -11,7 +11,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+
     return  Scaffold(
+      key: scaffoldKey, //tiene la referencia a este scaffold (tamaños, posiciones, etc.)
       appBar: AppBar(
         title: const Text('Flutter'),        
       ),
@@ -19,7 +23,7 @@ class HomeScreen extends StatelessWidget {
       body: const _HomeView(),
 
       // "drawer" Barra lateral
-      drawer: const SideMenu(),
+      drawer: SideMenu(scaffoldKey: scaffoldKey,),
 
       
 
@@ -65,21 +69,16 @@ class _CustomListTile extends StatelessWidget {
       subtitle: Text(menuItem.subTitle),
       
       onTap: () {
-
         // Navigator.of(context).push(
         //   MaterialPageRoute(
         //     builder: (context) => const ButtonsScreen(),
         //   )
         // );
 
-
         //Navigator.pushNamed(context, menuItem.link);
 
         context.push( menuItem.link );
         // context.pushNamed( CardsScreen.name );
-
-
-
       },
     );
   }
